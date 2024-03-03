@@ -12,8 +12,8 @@ body {
 .header {
     max-width: 1440px;
     margin: 0 auto;
-    padding-left: 100px;
-    padding-right: 100px;
+    padding-left: 80px;
+    padding-right: 80px;
 }
 
 header {
@@ -24,8 +24,8 @@ header {
 main {
     max-width: 1440px;
     margin: 0 auto;
-    padding-left: 100px;
-    padding-right: 100px;
+    padding-left: 80px;
+    padding-right: 80px;
 }
 
 .header{
@@ -77,7 +77,7 @@ main {
     color: rgba(0, 0, 0, 0.5);
 }
 
-.form-select {
+/* .form-select {
     font-size: 15px;
     border: none;
     outline: none;
@@ -87,19 +87,55 @@ main {
     width: 200px;
     font-weight: 500;
     box-shadow: 0px 5px 10px 0px rgb(209, 208, 208);
+} */
+
+.select-box {
+    width: 380px;
+    position: relative;
 }
+
+.select-option {
+    position: relative;
+}
+
+.select-option input {
+    width: 100%;
+    background-color: #fff;
+    color: #000;
+    border-radius: 7px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 10px 10px 10px 30px;
+    border: 0 !important;
+    outline: 0 !important;
+}
+
+.select-option::after {
+    content: "";
+    border-top: 8px solid #000;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    margin-top: -4px;
+}
+
 
 .cards {
     flex-wrap: wrap;
     display: flex;
     align-items: center;
-    gap: 90px;
+    gap: 44px;
     margin-bottom: 50px;
 }
 
 .card {
     display: inline-block;
     margin-top: 48px;
+    width: 264px;
+    height: 400px;
     border-radius: 7px;
     background-color: #f8f8f8;
     box-shadow: 5px 5px 10px 5px rgb(209, 208, 208);
@@ -111,6 +147,8 @@ main {
 }
 
 .card img {
+    width: 264px;
+    height: 160px;
     border-top-left-radius: 7px;
     border-top-right-radius: 7px;
 }
@@ -124,9 +162,8 @@ main {
 }
 
 .info h4 {
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 600;
-    width: 240px;
     margin-bottom: 20px;
 }
 

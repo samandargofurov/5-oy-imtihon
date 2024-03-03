@@ -1,6 +1,6 @@
 function createCard(country) {
     return `
-            <div class="card" style="height: 336px;">
+            <div class="card"">
                 <img src="${country.flags.png}" alt="Flag picture">
 
                 <div class="info">

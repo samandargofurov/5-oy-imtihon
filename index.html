@@ -27,14 +27,30 @@
                 <input id="search" type="text" placeholder="Search for a country">
             </div>
 
-            <select id="select" class="form-select" aria-label="Default select example">
+            <!-- <select id="select" class="form-select" aria-label="Default select example">
                 <option selected>Filter by Region</option>
                 <option value="africa">Afrika</option>
                 <option value="america">America</option>
                 <option value="asia">Asia</option>
                 <option value="europe">Europe</option>
                 <option value="oceania">Oceania</option>
-              </select>
+              </select> -->
+
+            <div class="select-box">
+                <div class="select-option">
+                    <input type="text" placeholder="Filter by Region" id="select" readonly name="">
+                </div>
+                <div class="content">
+                    <ul class="options">
+                        <li>Afrika</li>
+                        <li>America</li>
+                        <li>Asia</li>
+                        <li>Europe</li>
+                        <li>Oceania</li>
+                    </ul>
+                </div>            
+            </div>
+
         </div>
 
         <div id="cards" class="cards">
