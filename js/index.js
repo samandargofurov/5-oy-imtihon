@@ -1,9 +1,15 @@
 import { createCard } from "./function.js";
 
+const body = document.querySelector('#body');
 const icon = document.querySelector('#icon');
+const moon = document.querySelector('#moon');
 const search = document.querySelector('#search');
-const select = document.getElementById('select');
 const cards = document.querySelector('#cards');
+const selectBox = document.querySelector(".select-box");
+const selectOption = document.querySelector(".select-option");
+const select = document.querySelector('#select');
+const options = document.querySelector(".options");
+const optionsList = document.querySelector(".options li");
 
 window.addEventListener('load', function() {
     const loader = document.querySelector('.loader');
@@ -35,8 +41,20 @@ document.addEventListener('DOMContentLoaded', function() {
 
 });
 
-icon && icon.addEventListener('click', function (e) {
+selectOption && selectOption.addEventListener('click', function() {
+    selectBox.classList.toggle('active');
+})
+
+optionsList && optionsList.forEach(function(optionsListSingle) {
+    optionsListSingle.addEventListener('click', function() {
+        text = this.textContent;
+        select.value = text;
+        selectBox.classList.remove('active');
+    })
+});
+
+moon && moon.addEventListener('click', function(e) {
     e.preventDefault();
-    
-    
+    document.body.style.background = "black";
+
 })
