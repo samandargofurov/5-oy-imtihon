@@ -68,6 +68,10 @@ icon && icon.addEventListener("click", (e) => {
         search.style.placeholder = 'white'
         select.style.background = '#2B3844'
         select.style.color = '#fff'
+        back.style.background = '#000'
+        back.style.color = '#000'
+        span.style.background = '#2B3844'
+
 
         row.style.color = '#fff'
         row.style.background = '#2B3844'
@@ -90,6 +94,9 @@ icon && icon.addEventListener("click", (e) => {
         search.style.color = 'white'
         select.style.background = ''
         select.style.color = '#000'
+        back.style.background = '#000'
+        back.style.color = '#000'
+        span.style.background = '#fff'
 
         row.style.color = '#000'
         row.style.background = '#fff'
@@ -105,6 +112,8 @@ icon && icon.addEventListener("click", (e) => {
 
 back && back.addEventListener('click', function(e) {
     e.preventDefault();
-
-    window.location.assign('http://127.0.0.1:5500/index.html');
+    let fullUrl = window.location.href;
+    let index = fullUrl.search('index');
+    let beseUrl = fullUrl.substring(0, index);
+    window.location.assign(`${beseUrl}/index.html`);
 });

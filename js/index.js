@@ -52,7 +52,7 @@ icon && icon.addEventListener("click", (e) => {
 
         search.style.background = '#fff'
         searchEngine.style.background = 'white'
-        searchEngine.style.color = 'white'
+        searchEngine.style.color = '#000'
         search.style.color = 'white'
         select.style.background = ''
         select.style.color = '#000'
@@ -85,9 +85,9 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 select.addEventListener('change', function() {
-    let amount = select.amount
+    let amount = select.value
 
-    fetch(`https://countries-api-v7sn.onrender.com/countries?region=${amount}`)
+    fetch(`https://frontend-mentor-apis-6efy.onrender.com/countries?region=${amount}`)
 
     .then(data => data.json())
     .then(data => {
@@ -103,7 +103,7 @@ select.addEventListener('change', function() {
 })
 
 cards && cards.addEventListener('click', function() {
-    fetch("https://frontend-mentor-apis-6efy.onrender.com/countries${value}", {
+    fetch("https://frontend-mentor-apis-6efy.onrender.com/countries", {
         method: "GET"
     })
         .then(res => {
