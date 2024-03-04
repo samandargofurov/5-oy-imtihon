@@ -1,6 +1,6 @@
 function createCard(country) {
     return `
-            <div class="card"">
+            <div id="card" class="card"">
                 <img src="${country.flags.png}" alt="Flag picture">
 
                 <div class="info">
@@ -11,6 +11,12 @@ function createCard(country) {
                 </div>
             </div>
         `;
+}
+
+function createSlug(slug) {
+    return `
+        
+    `
 }
 
 export { createCard };

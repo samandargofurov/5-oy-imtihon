@@ -1,19 +1,14 @@
 import { createCard } from "./function.js";
 
 const body = document.querySelector('#body');
-const header = document.querySelector(".header");
-const header2 = document.querySelector("#header");
 const icon = document.querySelector('#icon');
 const moon = document.querySelector('#moon');
 const search = document.querySelector('#search');
 const card = document.querySelector('.card');
-const info = document.querySelector('.info');
-const cardValue = document.querySelector('#card h4');
 const cards = document.querySelector('#cards');
-const searchEngine = document.querySelector(".search-engine");
 const select = document.querySelector('#select');
-const options = document.querySelector(".options");
-const optionsList = document.querySelector(".options li");
+const header = document.querySelector('.header');
+const back = document.querySelector('.back');
 
 window.addEventListener('load', function() {
     const loader = document.querySelector('.loader');
@@ -23,6 +18,39 @@ window.addEventListener('load', function() {
         document.body.removeChild("loader")
     })
 })
+
+cards && cards.addEventListener('click', function() {
+    fetch("https://countries-api-v7sn.onrender.com/countries/slug/${country-name}", {
+        method: "GET"
+    })
+        .then(res => {
+                return res.json();
+        })
+        .then(data => {
+            if (data) {
+                data.data.forEach(country => {
+                    let row = createCard(country);
+                    cards.innerHTML += row
+                });
+            }
+        })
+        .catch(error => {
+            console.log(error);
+        });
+
+});
+
+// selectOption && selectOption.addEventListener('click', function() {
+//     selectBox.classList.toggle('active');
+// })
+
+// optionsList && optionsList.forEach(function(optionsListSingle) {
+//     optionsListSingle.addEventListener('click', function() {
+//         text = this.textContent;
+//         select.value = text;
+//         selectBox.classList.remove('active');
+//     })
+// });
 
 icon && icon.addEventListener("click", (e) => {
     e.preventDefault();
@@ -43,6 +71,12 @@ icon && icon.addEventListener("click", (e) => {
 
         row.style.color = '#fff'
         row.style.background = '#2B3844'
+
+        // hd.style.background = '#2B3844'
+        // hd.style.boxShadow = 'none'
+        // select.style.boxShadow = 'none'
+        // search.style.boxShadow = 'none'
+        
     } else {
         document.body.style.background = '#fff'
         document.body.style.color = '#2B3844'
@@ -59,67 +93,18 @@ icon && icon.addEventListener("click", (e) => {
 
         row.style.color = '#000'
         row.style.background = '#fff'
+
+        // search.style.boxShadow = ''
+        // select.style.boxShadow = ''
+        // hd.style.boxShadow = ''
+        // hd.style.zIndex = '2000'
+
     }
     document.body.classList.toggle("icon");
 });
 
-document.addEventListener('DOMContentLoaded', function() {
-    fetch("https://frontend-mentor-apis-6efy.onrender.com/countries", {
-        method: "GET"
-    })
-        .then(res => {
-                return res.json();
-        })
-        .then(data => {
-            if (data) {
-                data.data.forEach(country => {
-                    let row = createCard(country);
-                    cards.innerHTML += row
-                });
-            }
-        })
-        .catch(error => {
-            console.log(error);
-        });
+back && back.addEventListener('click', function(e) {
+    e.preventDefault();
 
+    window.location.assign('http://127.0.0.1:5500/index.html');
 });
-
-select.addEventListener('change', function() {
-    let amount = select.amount
-
-    fetch(`https://countries-api-v7sn.onrender.com/countries?region=${amount}`)
-
-    .then(data => data.json())
-    .then(data => {
-        search.innerHTML = ''
-        data.data.forEach((country) => {
-            let card = createCard(country)
-            main.innerHTML += card
-        })
-    })
-    .catch(error => {
-        console.log(error);
-    });
-})
-
-cards && cards.addEventListener('click', function() {
-    fetch("https://frontend-mentor-apis-6efy.onrender.com/countries${value}", {
-        method: "GET"
-    })
-        .then(res => {
-            return res.json();
-        })
-        .then(data => {
-            console.log(data);
-        })
-        .catch(error => {
-            console.log(error);
-        });
-})
-
-
-
-
-
-
-
