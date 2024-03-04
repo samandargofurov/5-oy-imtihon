@@ -70,6 +70,10 @@ main img {
     cursor: pointer;
 }
 
+.back p {
+    background-color: transparent;
+}
+
 .country {
     display: flex;
     gap: 90px;

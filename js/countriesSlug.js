@@ -1,10 +1,10 @@
-import { createCard } from "./function.js";
+import { createSlug } from "./function.js";
 
 const body = document.querySelector('#body');
 const icon = document.querySelector('#icon');
 const moon = document.querySelector('#moon');
 const search = document.querySelector('#search');
-const card = document.querySelector('.card');
+const card = document.querySelector('#card');
 const cards = document.querySelector('#cards');
 const select = document.querySelector('#select');
 const header = document.querySelector('.header');
@@ -19,38 +19,13 @@ window.addEventListener('load', function() {
     })
 })
 
-cards && cards.addEventListener('click', function() {
-    fetch("https://countries-api-v7sn.onrender.com/countries/slug/${country-name}", {
-        method: "GET"
-    })
-        .then(res => {
-                return res.json();
-        })
-        .then(data => {
-            if (data) {
-                data.data.forEach(country => {
-                    let row = createCard(country);
-                    cards.innerHTML += row
-                });
-            }
-        })
-        .catch(error => {
-            console.log(error);
-        });
-
+back && back.addEventListener('click', function(e) {
+    e.preventDefault();
+    let fullUrl = window.location.href;
+    let index = fullUrl.search('index');
+    let beseUrl = fullUrl.substring(0, index);
+    window.location.assign(`${beseUrl}/index.html`);
 });
-
-// selectOption && selectOption.addEventListener('click', function() {
-//     selectBox.classList.toggle('active');
-// })
-
-// optionsList && optionsList.forEach(function(optionsListSingle) {
-//     optionsListSingle.addEventListener('click', function() {
-//         text = this.textContent;
-//         select.value = text;
-//         selectBox.classList.remove('active');
-//     })
-// });
 
 icon && icon.addEventListener("click", (e) => {
     e.preventDefault();
@@ -70,7 +45,6 @@ icon && icon.addEventListener("click", (e) => {
         select.style.color = '#fff'
         back.style.background = '#000'
         back.style.color = '#000'
-        span.style.background = '#2B3844'
 
 
         row.style.color = '#fff'
@@ -96,7 +70,8 @@ icon && icon.addEventListener("click", (e) => {
         select.style.color = '#000'
         back.style.background = '#000'
         back.style.color = '#000'
-        span.style.background = '#fff'
+        p.style.background = '#fff'
+        p.style.color = '#000'
 
         row.style.color = '#000'
         row.style.background = '#fff'
@@ -110,10 +85,4 @@ icon && icon.addEventListener("click", (e) => {
     document.body.classList.toggle("icon");
 });
 
-back && back.addEventListener('click', function(e) {
-    e.preventDefault();
-    let fullUrl = window.location.href;
-    let index = fullUrl.search('index');
-    let beseUrl = fullUrl.substring(0, index);
-    window.location.assign(`${beseUrl}/index.html`);
-});
+
