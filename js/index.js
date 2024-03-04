@@ -16,7 +16,7 @@ const select = document.querySelector('#select');
 // const optionsList = document.querySelector(".options li");
 
 
-// lader
+// loader
 window.addEventListener('load', function() {
     const loader = document.querySelector('.loader');
 
@@ -88,35 +88,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
 });
 
-// bitta malumotni olish
-card && card.addEventListener('click', function(e) {
-    e.preventDefault();
-
-    fetch(`https://countries-api-v7sn.onrender.com/countries/slug`, {
-        method: 'GET'
-    })
-        .then((res) => {
-            console.log(res);
-        })
-        .then((data) => {
-            console.log(data);
-        })
-        .catch((err) => {
-            console.log(err);
-        })
-
-
-
-})
-
-
 // search
 search.addEventListener("keyup", function () {
     let value = search.value;
     fetch(
       `https://frontend-mentor-apis-6efy.onrender.com/countries?search=${value}`
     )
-      .then((data) => data.json())
+      .then((res) => res.json())
       .then((data) => {
         cards.innerHTML = "";
         data.data.forEach((country) => {
@@ -142,16 +120,65 @@ search.addEventListener("keyup", function () {
 // filter
 select.addEventListener("change", () => {
     let value = select.value;
-    fetch(`https://frontend-mentor-apis-6efy.onrender.com/countries?search=${value}`)
-      .then((data) => data.json())
+    fetch(`https://countries-api-v7sn.onrender.com/countries?region=${value}`)
+      .then(res => res.json())
       .then((data) => {
-        search.innerHTML = "";
-        data.data.forEach((country) => {
-          let card = createCard(country)
-          search.innerHTML += card;
+            search.innerHTML = "";
+        data.data.forEach(country => {
+            let card = createCard(country)
+            search.innerHTML += card;
         });
       })
-      .catch((err) => {
-        console.log(err);
-      });
 });
+
+
+// bitta malumotni olish
+// card && card.addEventListener('click', () => {
+//     let card = card.value;
+//     fetch(
+//       `https://countries-api-v7sn.onrender.com/countries/slug/${card}`
+//     )
+//       .then((data) => data.json())
+//       .then((data) => {
+//         data.data.forEach((slug) => {
+//           let card = `
+//                 <div class="country">
+//                     <img src="${slug.img}" alt="flag country">
+//                     <div class="allInfo">
+//                         <h3 class="name" style="font-size: 32px;">${slug.name}</h3>
+//                         <div class="info">
+//                             <div class="left-side">
+//                                 <div class="first-name"><span>Native Name:</span>${slug.nativeName}</div>
+//                                 <div class="population"><span>Population:</span>${slug.population}</div>
+//                                 <div class="region"><span>Region:</span>${slug.region}</div>
+//                                 <div class="subRegion"><span>Sub Region:</span>${slug.subRegion}</div>
+//                                 <div class="capital"><span>Capital:</span>${slug.capital}</div>
+//                             </div>
+//                             <div class="right-side">
+//                                 <div class="domain"><span>Top Level Domain:</span>${topLevelDomain}</div>
+//                                 <div class="currency"><span>Currencies:</span>${slug.Currencies}</div>
+//                                 <div class="language"><span>Languages:</span>${slug.languages}</div>
+//                             </div>
+//                         </div>
+
+//                         <div class="footer">
+//                             <h2 class="border-countries">${slug.borderCountries}</h2>
+//                             <span>${slug}</span>
+//                             <span>${slug}</span>
+//                             <span>${slug}</span>
+//                         </div>
+//                     </div>
+//                 </div>
+//             `;
+//           hero.innerHTML += card;
+//         });
+//       })
+//       .catch((err) => {
+//         console.log(err);
+//       });
+// })
+
+
+card && card.addEventListener('click', () => {
+    window.location.assign(`http://127.0.0.1:5500/pages/countriesSlug.html`)
+})
